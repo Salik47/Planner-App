@@ -9,6 +9,7 @@ const sendMessage = async () => {
   let minutes = date.getMinutes();
   let hour = date.getHours();
   const schedule = await RedisClient.get("schedule");
+  const parsedSchedule = JSON.parse(schedule);
 
   const index = hour - 9;
 
