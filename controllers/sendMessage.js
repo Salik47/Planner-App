@@ -19,7 +19,7 @@ const sendMessage = async () => {
   } else {
     if (index - 1 >= 0) {
       console.log(
-        `It's time to start ${parsedSchedule[index]} task was ${
+        `It's time to start ${parsedSchedule[index]} task, was ${
           parsedSchedule[index - 1]
         } completed?`
       );
