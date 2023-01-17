@@ -10,14 +10,10 @@ const PORT = 1338;
 
 // Middleware
 app.use(express.json());
-app.use(express.static("public"));
 app.use(cors());
 app.use(logger("dev"));
 
 // Routes
-app.get("/", (_req, res) => {
-  res.sendFile("index.html", { root: path.join(__dirname, "public") });
-});
 app.use("/api/v1/schedule", scheduleRoutes);
 
 app.listen(PORT, () => {
