@@ -9,17 +9,26 @@ const sendMessage = async () => {
   let minutes = date.getMinutes();
   let hour = date.getHours();
   const schedule = await RedisClient.get("schedule");
+  const parsedSchedule = JSON.parse(schedule);
 
   const index = hour - 9;
 
-  if(minutes === 30) {
+  if (minutes === 30) {
     // send quote
+    console.log(getQuote());
   } else {
-    if(index - 1 >= 0) {
+    if (index - 1 >= 0) {
       // get schedule at index
       // remember at a time there would be something ending and next thing starting
       // check if last task is completed and next task is starting
       // mesage: It's time to start ${schedule[index]} task was ${schedule[index-1]} completed?
+      console.log(
+        `It's time to start ${parsedSchedule[index]} task was ${
+          parsedSchedule[index - 1]
+        } completed?`
+      );
+    } else if (index === 0) {
+      console.log(`It's time to start ${parsedSchedule[index]}`);
     }
   }
 };
